@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Sy0ung">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="" />
+
+
+<meta name="description" content="Metasploit学习： Samba服务 usermap_script安全漏洞利用1、username_script 是什么1234- Samba协议的一个漏洞CVE-2007-2447，用户..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Metasploit学习： Samba服务 usermap_script安全漏洞利用 |
+    
+    Sy0ung
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Sy0ung" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Sy0ung'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Sy0ung</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                主页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Metasploit学习： Samba服务 usermap_script安全漏洞利用">
+            
+            Metasploit学习： Samba服务 usermap_script安全漏洞利用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/11/23</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="Metasploit学习：-Samba服务-usermap-script安全漏洞利用"><a href="#Metasploit学习：-Samba服务-usermap-script安全漏洞利用" class="headerlink" title="Metasploit学习： Samba服务 usermap_script安全漏洞利用"></a>Metasploit学习： Samba服务 usermap_script安全漏洞利用</h1><h2 id="1、username-script-是什么"><a href="#1、username-script-是什么" class="headerlink" title="1、username_script 是什么"></a>1、username_script 是什么</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- Samba协议的一个漏洞CVE-2007-2447，用户名映射脚本命令执行</span><br><span class="line">- 影响Samba的3.0.20到3.0.25rc3 版本</span><br><span class="line">- 当使用非默认的用户名映射脚本配置选项时产生</span><br><span class="line">- 通过指定一个包含shell元字符的用户名，攻击者能够执行任意命令</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、如何利用"><a href="#2、如何利用" class="headerlink" title="2、如何利用"></a>2、如何利用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1、使用metasploit框架</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、漏洞时间线"><a href="#3、漏洞时间线" class="headerlink" title="3、漏洞时间线"></a>3、漏洞时间线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">漏洞的时间线： </span><br><span class="line">- 2007年5月7日：漏洞匿名披露到security@samba.org电子邮件列表中。</span><br><span class="line">- 2007年5月7日：Samba的开发人员Gerald Carter开始响应这个漏洞。</span><br><span class="line">- 2007年5月9日：Samba的开发者Jeremy Allison发布了补丁，用于iDefense测试。</span><br><span class="line">- 2007年5月10日：向vendor-sec邮件列表发布通知。</span><br><span class="line">- 2007年5月14日：公开漏洞信息。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、利用过程"><a href="#4、利用过程" class="headerlink" title="4、利用过程"></a>4、利用过程</h2><p>工具书：Web安全攻防渗透测试实战指南</p>
+<p>首先查看靶机metasploitable的IP地址</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105527010.png" alt="image-20201118105527010"></p>
+<p>对靶机进行扫描，收集可用的服务信息。使用nmap扫描并查看系统开放端口和相关的应用程序</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105915405.png" alt="image-20201118105915405"></p>
+<p>收集到目标机相关信息后，选择正确的Exploit和Payload，扫描结果显示主机运行着Samba3.x服务。</p>
+<p><strong>Samba是在Linux和UNIX系统上实现SMB (Server Messages Block,信息服务块)协议的一款免费软件。SMB是一种在局域网上共享文件和打印机的通信协议，它在局域网内使用Linux和Windows系统的机器之间提供文件及打印机等资源的共享服务。</strong></p>
+<p>输入msf &gt; search samba 命令搜索Samba的漏洞利用模块，并选择合适的漏洞利用模块</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118110328189.png" alt="image-20201118110328189"></p>
+<p>Samba服务将返回漏洞利用模块的列表，因为exploit/multi/samba/usermap_script被标记为“Excellent”，选择此模块进行接下来的渗透。</p>
+<p>查看漏洞详细信息可用如图命令：</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118110734335.png" alt="image-20201118110734335"></p>
+<p>使用该漏洞利用模块，并查看该漏洞利用模块下可供选择的攻击载荷模块。</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111042299.png" alt="image-20201118111042299"></p>
+<p>选择基础的cmd/unix/reverse反向攻击载荷模块</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111131704.png" alt="image-20201118111131704"></p>
+<p>设置被攻击主机IP地址、该漏洞利用的端口号、发动攻击主机IP地址。</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111228955.png" alt="image-20201118111228955"></p>
+<p>再次确认参数是否已设置正确</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111253413.png" alt="image-20201118111253413"></p>
+<p>设置完所有参数变量后，输入攻击命令exploit或者run，发动攻击。</p>
+<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111431687.png" alt="image-20201118111431687"></p>
+<p>MSF发动攻击成功后会获取目标主机的shell，验证该shell是目标主机可以查询主机名、用户名和IP地址。在攻击机和目标机之间建立了一个shell连接。</p>
+<h2 id="图形化界面工具msfgui："><a href="#图形化界面工具msfgui：" class="headerlink" title="图形化界面工具msfgui："></a>图形化界面工具msfgui：</h2><p><a href="https://blog.csdn.net/qq_43968080/article/details/103544016" target="_blank" rel="noopener">https://blog.csdn.net/qq_43968080/article/details/103544016</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/11/23/ms17_010%EF%BC%88%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%EF%BC%89%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" class="pre-post btn btn-default" title='ms17_010（永恒之蓝）漏洞利用'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            ms17_010（永恒之蓝）漏洞利用</span>
+    </a>
+    
+    
+    <a href="/2020/11/23/Metasploit%E6%8A%8Acommand%20shell%E8%BD%AC%E4%B8%BAmeterpreter%20shell/" class="next-post btn btn-default" title='Metasploit把command shell转为meterpreter shell'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Metasploit把command shell转为meterpreter shell</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-Hans'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Metasploit学习：-Samba服务-usermap-script安全漏洞利用"><span class="toc-text">Metasploit学习： Samba服务 usermap_script安全漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、username-script-是什么"><span class="toc-text">1、username_script 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、如何利用"><span class="toc-text">2、如何利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、漏洞时间线"><span class="toc-text">3、漏洞时间线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、利用过程"><span class="toc-text">4、利用过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图形化界面工具msfgui："><span class="toc-text">图形化界面工具msfgui：</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2020
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
