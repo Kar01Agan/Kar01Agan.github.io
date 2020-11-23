@@ -160,22 +160,18 @@
     </div>
     
     <div class="post-body post-content">
-        <h1 id="Metasploit把command-shell转为meterpreter-shell"><a href="#Metasploit把command-shell转为meterpreter-shell" class="headerlink" title="Metasploit把command shell转为meterpreter shell"></a>Metasploit把command shell转为meterpreter shell</h1><h2 id="获取command-shell"><a href="#获取command-shell" class="headerlink" title="获取command shell"></a>获取command shell</h2><p>使用metasploit工具，使用漏洞利用模块exploit/multi/samba/usermap_script拿到metasploitbale虚拟机的shell</p>
-<img src="/.com//Users\11445\AppData\Roaming\Typora\typora-user-images\image-20201118103644261.png" alt="image-20201118103644261" style="zoom: 80%;">
-
-<p>这里的shell是普通的command shell</p>
+        <h1 id="Metasploit把command-shell转为meterpreter-shell"><a href="#Metasploit把command-shell转为meterpreter-shell" class="headerlink" title="Metasploit把command shell转为meterpreter shell"></a>Metasploit把command shell转为meterpreter shell</h1><h2 id="获取command-shell"><a href="#获取command-shell" class="headerlink" title="获取command shell"></a>获取command shell</h2><p>使用metasploit工具，使用漏洞利用模块exploit/multi/samba/usermap_script拿到metasploitbale虚拟机的shell。<a href="https://blog.csdn.net/Karol_agan/article/details/109784575" target="_blank" rel="noopener">(详细请点击)</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20201118200358301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0thcm9sX2FnYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>这里的shell是普通的command shell</p>
 <h2 id="shell转换"><a href="#shell转换" class="headerlink" title="shell转换"></a>shell转换</h2><p>ctrl+Z，选择y，则将当前shell放到后台。</p>
-<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104354546.png" alt="image-20201118104354546"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201118200416972.png#pic_center" alt="在这里插入图片描述"></p>
 <p>输入sessions -l(小写的L)查看当前活跃的sessions</p>
-<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104815598.png" alt="image-20201118104815598"></p>
-<p>是刚才挂起的metasploitable的shell，当前的session id是2，执行下图命令</p>
-<p>use post/multi/manage/shell_to_meterpreter</p>
-<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119112520217.png" alt="image-20201119112520217"></p>
-<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104955064.png" alt="image-20201118104955064"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201118200430355.png#pic_center" alt="在这里插入图片描述"></p>
+<p>是刚才挂起的metasploitable的shell，当前的session id是2，执行下图命令<br>use post/multi/manage/shell_to_meterpreter<br><img src="https://img-blog.csdnimg.cn/20201119112720324.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201118200444320.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0thcm9sX2FnYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 <p>再次输入sessions -l 查看后台的sessions</p>
-<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105035890.png" alt="image-20201118105035890"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201118200457808.png#pic_center" alt="在这里插入图片描述"></p>
 <p>多了一个Id为3的meterpreter shell，输入session -i 3,调用Id为3的shell,至此转换成功。</p>
-<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105113044.png" alt="image-20201118105113044"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201118200512938.png#pic_center" alt="在这里插入图片描述"></p>
 
     </div>
     
@@ -201,10 +197,10 @@
     </a>
     
     
-    <a href="/2020/11/23/2020.11.19/" class="next-post btn btn-default" title='2020.11.19'>
+    <a href="/2020/06/12/hello-world/" class="next-post btn btn-default" title='Hello World'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            2020.11.19</span><i class="fa fa-angle-right fa-fw"></i>
+            Hello World</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
