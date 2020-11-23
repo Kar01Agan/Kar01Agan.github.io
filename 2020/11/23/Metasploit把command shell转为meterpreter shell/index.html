@@ -74,7 +74,7 @@
 <![endif]-->
 <body>
     <header class="main-header"  style="background-image:url(
-    http://snippet.shenliyang.com/img/banner.jpg)"
+    /img/banner.jpg)"
      >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='Sy0ung'>
@@ -161,21 +161,21 @@
     
     <div class="post-body post-content">
         <h1 id="Metasploit把command-shell转为meterpreter-shell"><a href="#Metasploit把command-shell转为meterpreter-shell" class="headerlink" title="Metasploit把command shell转为meterpreter shell"></a>Metasploit把command shell转为meterpreter shell</h1><h2 id="获取command-shell"><a href="#获取command-shell" class="headerlink" title="获取command shell"></a>获取command shell</h2><p>使用metasploit工具，使用漏洞利用模块exploit/multi/samba/usermap_script拿到metasploitbale虚拟机的shell</p>
-<img src="C:\Users\11445\AppData\Roaming\Typora\typora-user-images\image-20201118103644261.png" alt="image-20201118103644261" style="zoom: 80%;" />
+<img src="/.com//Users\11445\AppData\Roaming\Typora\typora-user-images\image-20201118103644261.png" alt="image-20201118103644261" style="zoom: 80%;">
 
 <p>这里的shell是普通的command shell</p>
 <h2 id="shell转换"><a href="#shell转换" class="headerlink" title="shell转换"></a>shell转换</h2><p>ctrl+Z，选择y，则将当前shell放到后台。</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104354546.png" alt="image-20201118104354546"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104354546.png" alt="image-20201118104354546"></p>
 <p>输入sessions -l(小写的L)查看当前活跃的sessions</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104815598.png" alt="image-20201118104815598"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104815598.png" alt="image-20201118104815598"></p>
 <p>是刚才挂起的metasploitable的shell，当前的session id是2，执行下图命令</p>
 <p>use post/multi/manage/shell_to_meterpreter</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119112520217.png" alt="image-20201119112520217"></p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104955064.png" alt="image-20201118104955064"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119112520217.png" alt="image-20201119112520217"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118104955064.png" alt="image-20201118104955064"></p>
 <p>再次输入sessions -l 查看后台的sessions</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105035890.png" alt="image-20201118105035890"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105035890.png" alt="image-20201118105035890"></p>
 <p>多了一个Id为3的meterpreter shell，输入session -i 3,调用Id为3的shell,至此转换成功。</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105113044.png" alt="image-20201118105113044"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105113044.png" alt="image-20201118105113044"></p>
 
     </div>
     

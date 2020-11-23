@@ -74,7 +74,7 @@
 <![endif]-->
 <body>
     <header class="main-header"  style="background-image:url(
-    http://snippet.shenliyang.com/img/banner.jpg)"
+    /img/banner.jpg)"
      >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='Sy0ung'>
@@ -168,26 +168,26 @@
 
 <h2 id="4、利用过程"><a href="#4、利用过程" class="headerlink" title="4、利用过程"></a>4、利用过程</h2><p>工具书：Web安全攻防渗透测试实战指南</p>
 <p>首先查看靶机metasploitable的IP地址</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105527010.png" alt="image-20201118105527010"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105527010.png" alt="image-20201118105527010"></p>
 <p>对靶机进行扫描，收集可用的服务信息。使用nmap扫描并查看系统开放端口和相关的应用程序</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105915405.png" alt="image-20201118105915405"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118105915405.png" alt="image-20201118105915405"></p>
 <p>收集到目标机相关信息后，选择正确的Exploit和Payload，扫描结果显示主机运行着Samba3.x服务。</p>
 <p><strong>Samba是在Linux和UNIX系统上实现SMB (Server Messages Block,信息服务块)协议的一款免费软件。SMB是一种在局域网上共享文件和打印机的通信协议，它在局域网内使用Linux和Windows系统的机器之间提供文件及打印机等资源的共享服务。</strong></p>
 <p>输入msf &gt; search samba 命令搜索Samba的漏洞利用模块，并选择合适的漏洞利用模块</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118110328189.png" alt="image-20201118110328189"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118110328189.png" alt="image-20201118110328189"></p>
 <p>Samba服务将返回漏洞利用模块的列表，因为exploit/multi/samba/usermap_script被标记为“Excellent”，选择此模块进行接下来的渗透。</p>
 <p>查看漏洞详细信息可用如图命令：</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118110734335.png" alt="image-20201118110734335"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118110734335.png" alt="image-20201118110734335"></p>
 <p>使用该漏洞利用模块，并查看该漏洞利用模块下可供选择的攻击载荷模块。</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111042299.png" alt="image-20201118111042299"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111042299.png" alt="image-20201118111042299"></p>
 <p>选择基础的cmd/unix/reverse反向攻击载荷模块</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111131704.png" alt="image-20201118111131704"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111131704.png" alt="image-20201118111131704"></p>
 <p>设置被攻击主机IP地址、该漏洞利用的端口号、发动攻击主机IP地址。</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111228955.png" alt="image-20201118111228955"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111228955.png" alt="image-20201118111228955"></p>
 <p>再次确认参数是否已设置正确</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111253413.png" alt="image-20201118111253413"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111253413.png" alt="image-20201118111253413"></p>
 <p>设置完所有参数变量后，输入攻击命令exploit或者run，发动攻击。</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111431687.png" alt="image-20201118111431687"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201118111431687.png" alt="image-20201118111431687"></p>
 <p>MSF发动攻击成功后会获取目标主机的shell，验证该shell是目标主机可以查询主机名、用户名和IP地址。在攻击机和目标机之间建立了一个shell连接。</p>
 <h2 id="图形化界面工具msfgui："><a href="#图形化界面工具msfgui：" class="headerlink" title="图形化界面工具msfgui："></a>图形化界面工具msfgui：</h2><p><a href="https://blog.csdn.net/qq_43968080/article/details/103544016" target="_blank" rel="noopener">https://blog.csdn.net/qq_43968080/article/details/103544016</a></p>
 

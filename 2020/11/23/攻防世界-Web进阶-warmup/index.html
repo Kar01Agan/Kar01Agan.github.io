@@ -78,7 +78,7 @@
 <![endif]-->
 <body>
     <header class="main-header"  style="background-image:url(
-    http://snippet.shenliyang.com/img/banner.jpg)"
+    /img/banner.jpg)"
      >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='Sy0ung'>
@@ -165,9 +165,9 @@
     
     <div class="post-body post-content">
         <h1 id="攻防世界-Web进阶-warmup"><a href="#攻防世界-Web进阶-warmup" class="headerlink" title="攻防世界-Web进阶-warmup"></a>攻防世界-Web进阶-warmup</h1><p>F12查看源码，发现source.php</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121113538213.png" alt="image-20201121113538213"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121113538213.png" alt="image-20201121113538213"></p>
 <p>访问source.php，发现是代码审计题</p>
-<p>白名单whitlist中有hint.php，访问<img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121113703932.png" alt="image-20201121113703932"></p>
+<p>白名单whitlist中有hint.php，访问<img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121113703932.png" alt="image-20201121113703932"></p>
 <p>得知ffffllllaaaagggg应该是放有flag的文件</p>
 <p>对source.php进行审计</p>
 <p><strong>目的执行 include $_REQUEST[‘file’];　　　　这句代码关键</strong></p>
@@ -181,12 +181,12 @@
 <p>由于我们要构造payload，前两点直接满足，直接查看<code>checkFile</code>函数代码：</p>
 <p><img src="https://img2020.cnblogs.com/blog/1821718/202008/1821718-20200818175740036-436794394.png" alt="img"></p>
 <p>访问<a href="http://220.249.52.133:44549/?file=source.php?ffffllllaaaagggg，页面返回空" target="_blank" rel="noopener">http://220.249.52.133:44549/?file=source.php?ffffllllaaaagggg，页面返回空</a></p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121114949122.png" alt="image-20201121114949122"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121114949122.png" alt="image-20201121114949122"></p>
 <p>说明经过checkFile函数返回True，而此时include无法包含source.php?ffffllllaaaagggg.php这个文件，则需要深入了解include函数</p>
 <p><img src="https://img-blog.csdnimg.cn/20200319173934886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l5Ynp6eg==,size_16,color_FFFFFF,t_70" alt="img"></p>
 <p>为什么<code>include source.php(或hint.php)?/../../../../ffffllllaaaagggg</code>能执行成功</p>
 <p>因为我们的参数是有<code>/../../../../</code>这样的路径，所以符合最后一段话如果定义了路径，就会忽略<code>/</code>前的字符串即source.php而去找<code>/../../../../ffffllllaaaagggg</code>这个文件，而需要几个../需要依次测试，当为四个../时页面显示flag</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121115003072.png" alt="image-20201121115003072"></p>
+<p><img src="/.com//C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201121115003072.png" alt="image-20201121115003072"></p>
 
     </div>
     

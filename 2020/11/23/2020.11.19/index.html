@@ -79,7 +79,7 @@ l
 <![endif]-->
 <body>
     <header class="main-header"  style="background-image:url(
-    http://snippet.shenliyang.com/img/banner.jpg)"
+    /img/banner.jpg)"
      >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='Sy0ung'>
@@ -167,23 +167,23 @@ l
     <div class="post-body post-content">
         <h1 id="2020-11-19"><a href="#2020-11-19" class="headerlink" title="2020.11.19"></a>2020.11.19</h1><h2 id="Web安全攻防："><a href="#Web安全攻防：" class="headerlink" title="Web安全攻防："></a>Web安全攻防：</h2><p>P190-P233</p>
 <h2 id="CTF从0到1："><a href="#CTF从0到1：" class="headerlink" title="CTF从0到1："></a>CTF从0到1：</h2><p>SQL注入-2</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119221533313.png" alt="a">l</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224051880.png" alt="image-20201119224051880"></p>
-<p>尝试账号密码都为admin，提示账号或密码错误，若修改账号为1提示账号不存在，<img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224130050.png" alt="image-20201119224130050"></p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119221533313.png" alt="a">l</p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224051880.png" alt="image-20201119224051880"></p>
+<p>尝试账号密码都为admin，提示账号或密码错误，若修改账号为1提示账号不存在，<img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224130050.png" alt="image-20201119224130050"></p>
 <p>密码是隐藏的，则猜测只能通过账号来进行注入</p>
 <p>尝试账号:admin’</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224427283.png" alt="image-20201119224427283"></p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224427283.png" alt="image-20201119224427283"></p>
 <p>账号不存在</p>
 <p>尝试admin’ #</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224448787.png" alt="image-20201119224448787"></p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224448787.png" alt="image-20201119224448787"></p>
 <p>提示账号或密码错误</p>
 <p>多尝试几次：</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224517525.png" alt="image-20201119224517525"></p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224526308.png" alt="image-20201119224526308"></p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224517525.png" alt="image-20201119224517525"></p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224526308.png" alt="image-20201119224526308"></p>
 <p>得知账号存在布尔盲注</p>
 <h2 id="database-note"><a href="#database-note" class="headerlink" title="database():note"></a>database():note</h2><p>首先测试数据库长度</p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224631075.png" alt="image-20201119224631075"></p>
-<p><img src="C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224641075.png" alt="image-20201119224641075"></p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224631075.png" alt="image-20201119224631075"></p>
+<p><img src="/2020/11/23/2020.11/C:%5CUsers%5C11445%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201119224641075.png" alt="image-20201119224641075"></p>
 <p>则数据库长度为4</p>
 <p>利用substr判断数据库库名：</p>
 <p>admin’ and substr(database(),1,1)=’a’ #</p>
